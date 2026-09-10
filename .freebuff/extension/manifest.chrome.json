@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Sentinel — Privacy-First Vision Agent",
+  "version": "1.0.0",
+  "description": "On-device PII detection & redaction. The cloud never sees your raw screen — only placeholders.",
+  "minimum_chrome_version": "116",
+  "permissions": ["activeTab", "scripting", "storage", "offscreen", "tabs"],
+  "host_permissions": ["http://localhost:8787/*", "http://127.0.0.1:8787/*"],
+  "background": { "service_worker": "background.bundle.js", "type": "module" },
+  "action": { "default_popup": "popup/popup.html", "default_title": "Sentinel" },
+  "icons": { "128": "icons/icon128.png" },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.bundle.js"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+  "web_accessible_resources": [
+    { "resources": ["offscreen.html"], "matches": ["<all_urls>"] }
+  ]
+}

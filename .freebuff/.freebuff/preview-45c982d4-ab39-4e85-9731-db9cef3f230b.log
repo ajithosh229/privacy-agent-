@@ -1,0 +1,2 @@
+🛡  Sentinel server on :8787 (mode=hybrid, mock-only)
+{"ts":"2026-09-09T20:09:07.123Z","type":"TASK_START","prompt":"Buy this cart","gate":"pass","placeholders":{"EMAIL":1,"CARD":1},"hasImage":false,"imageKB":0}

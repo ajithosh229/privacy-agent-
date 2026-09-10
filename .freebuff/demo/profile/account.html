@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>MyAccount — Profile</title>
+  <style>
+    body { font-family: system-ui, sans-serif; background: #f5f6fa; padding: 24px; }
+    .card { background: #fff; border-radius: 12px; padding: 20px; max-width: 520px; margin: 0 auto; box-shadow: 0 2px 12px rgba(0,0,0,.08); }
+    h1 { font-size: 18px; } h2 { font-size: 14px; margin: 16px 0 6px; }
+    label { display: block; font-size: 12px; color: #555; margin: 8px 0 3px; }
+    input { width: 100%; box-sizing: border-box; padding: 8px; border: 1px solid #ccc; border-radius: 6px; }
+    button { margin-top: 14px; background: #2f6fed; color: #fff; border: 0; padding: 10px 18px; border-radius: 8px; font-weight: 600; cursor: pointer; }
+    .ok { display: none; color: #0b7a3c; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Profile — <span id="who">Ananya Iyer</span></h1>
+    <p class="muted">Member since 03/2021 · Last login 10/09/2026 09:12 from Mumbai</p>
+    <h2>Personal details</h2>
+    <label for="fullname">Full name</label>
+    <input id="fullname" value="Ananya Iyer">
+    <label for="phone">Phone</label>
+    <input id="phone" value="+91 86 5555 5555">
+    <label for="dob">Date of birth</label>
+    <input id="dob" value="14/06/1994">
+    <label for="address">Address</label>
+    <input id="address" value="7 Koramangala 5th Block, Bengaluru">
+    <button onclick="document.getElementById('ok').style.display='block'">Save profile</button>
+    <div class="ok" id="ok">✅ Profile saved</div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Sentinel Demo Scenarios</title>
+  <style>
+    body { font-family: system-ui, sans-serif; background: #0b0e14; color: #e6ebf5; max-width: 640px; margin: 40px auto; padding: 0 16px; }
+    h1 { font-size: 20px; } a { color: #00e5a0; }
+    li { margin: 10px 0; }
+    .tag { font-size: 10px; background: #16211c; color: #00e5a0; border: 1px solid #1f4636; padding: 1px 6px; border-radius: 10px; vertical-align: middle; }
+  </style>
+</head>
+<body>
+  <h1>🛡️ Sentinel demo scenarios</h1>
+  <p>Open a scenario, then run the Sentinel extension with a prompt from the README. Redactions render live on-page; the popup shows the outbound (sanitized) payload.</p>
+  <ul>
+    <li><a href="shop/checkout.html">🛒 Shop checkout</a> <span class="tag">CARD/CVV/PASSWORD/ADDRESS</span> — “Buy this cart”</li>
+    <li><a href="email/inbox.html">📧 Webmail inbox</a> <span class="tag">PERSON/EMAIL/PHONE/AADHAAR</span> — “Find the OTP code and open it”</li>
+    <li><a href="profile/account.html">👤 Account profile</a> <span class="tag">PERSON/PHONE/DATE</span> — “Update my profile”</li>
+    <li><a href="shop/search.html">🔍 Shop search</a> <span class="tag">none</span> — “Search for wireless headphones”</li>
+  </ul>
+  <p><b>Note:</b> All data on these pages is fake. Placeholders like [PERSON_1] shown by the overlay correspond to values that only exist in your local audit ledger.</p>
+</body>
+</html>

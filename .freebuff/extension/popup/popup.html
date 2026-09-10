@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    :root { --bg:#0b0e14; --panel:#12161f; --border:#242a37; --fg:#e6ebf5; --muted:#8b93a7; --accent:#00e5a0; --warn:#ff5c74; }
+    body { font-family: system-ui, sans-serif; background: var(--bg); color: var(--fg); margin: 0; width: 380px; font-size: 12px; }
+    header { display:flex; align-items:center; gap:8px; padding:10px 12px; border-bottom:1px solid var(--border); }
+    header h1 { font-size:13px; margin:0; flex:1; }
+    .shield { color: var(--accent); }
+    .dot { width:8px; height:8px; border-radius:50%; background:#555; }
+    .dot.on { background: var(--accent); box-shadow:0 0 6px var(--accent); }
+    .dot.err { background: var(--warn); }
+    main { padding: 10px 12px; }
+    textarea#prompt {
+      width:100%; box-sizing:border-box; background:var(--panel); color:var(--fg);
+      border:1px solid var(--border); border-radius:8px; padding:8px; font-size:12px; resize:vertical; min-height:44px;
+    }
+    .row { display:flex; gap:8px; margin-top:8px; align-items:center; }
+    button.primary {
+      flex:1; background:var(--accent); border:0; color:#04120c; font-weight:700;
+      padding:9px 12px; border-radius:8px; cursor:pointer; font-size:12px;
+    }
+    button.primary:disabled { opacity:.5; cursor:default; }
+    button.ghost { background:var(--panel); color:var(--fg); border:1px solid var(--border); border-radius:8px; padding:7px 10px; cursor:pointer; }
+    section { margin-top:12px; }
+    h3 { font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); margin:0 0 6px; }
+    .card { background:var(--panel); border:1px solid var(--border); border-radius:8px; padding:8px 10px; }
+    .stat-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px; }
+    .stat b { display:block; font-size:14px; }
+    .stat span { color:var(--muted); font-size:10px; }
+    .kv { display:flex; justify-content:space-between; padding:2px 0; }
+    .kv .k { color:var(--muted); }
+    .log { max-height:170px; overflow:auto; font-family:ui-monospace,monospace; font-size:10.5px; line-height:1.5; }
+    .log .step { color:var(--accent); }
+    .log .err { color:var(--warn); }
+    .muted { color:var(--muted); }
+    a { color:var(--accent); font-size:11px; text-decoration:none; }
+    footer { border-top:1px solid var(--border); padding:8px 12px; display:flex; justify-content:space-between; }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="shield">🛡️</span>
+    <h1>Sentinel <span class="muted">privacy agent</span></h1>
+    <span class="dot" id="dot"></span>
+  </header>
+
+  <main>
+    <textarea id="prompt" placeholder="e.g. Log me into GitHub — credentials are in the vault."></textarea>
+    <div class="row">
+      <button class="primary" id="run">Run task</button>
+      <button class="ghost" id="stop">Stop</button>
+    </div>
+    <div class="row"><span class="muted" id="status">Idle — nothing leaves this device un-redacted.</span></div>
+
+    <section id="liveSection" hidden>
+      <h3>Live turn</h3>
+      <div class="card">
+        <div class="stat-grid">
+          <div class="stat"><b id="stVision">–</b><span>vision ms</span></div>
+          <div class="stat"><b id="stServer">–</b><span>server ms</span></div>
+          <div class="stat"><b id="stRedact">–</b><span>redactions</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h3>Privacy ledger (local only)</h3>
+      <div class="card">
+        <div id="ledger" class="muted">Nothing redacted yet.</div>
+      </div>
+    </section>
+
+    <section>
+      <h3>Turn log</h3>
+      <div class="card"><div id="log" class="log"><span class="muted">No task yet.</span></div></div>
+    </section>
+
+    <section>
+      <h3>Outbound payload (what the server saw)</h3>
+      <div class="card"><div id="payload" class="log"><span class="muted">No transmission yet.</span></div></div>
+    </section>
+  </main>
+
+  <footer>
+    <a href="config.html" target="_blank">Settings & vault</a>
+    <a href="#" id="openSide">Send feedback</a>
+  </footer>
+
+  <script src="popup.js"></script>
+</body>
+</html>
