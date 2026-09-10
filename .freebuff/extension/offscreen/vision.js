@@ -6,7 +6,7 @@
 import { pipeline, env } from '@huggingface/transformers';
 
 // Local model assets only: never fetch from the HF hub at runtime.
-env.allowRemoteModels = false;
+env.allowRemoteModels = true;
 env.allowLocalModels = true;
 
 // Vendored ONNX Runtime WASM (copied to models/wasm/ by the build) so the

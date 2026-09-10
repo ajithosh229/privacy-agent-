@@ -20,8 +20,7 @@ export async function ensureVisionHost() {
   if (creating) { await creating; return; }
   creating = chrome.offscreen.createDocument({
     url: OFFSCREEN_URL,
-    reasons: ['DOM_SCRAPING', 'CANVAS',
-'WORKERS'],
+    reasons: ['DOM_SCRAPING'],
     justification: 'Run local vision models (Transformers.js) to detect and redact PII before any data leaves the device.',
   });
   try { await creating; } finally { creating = null; }
