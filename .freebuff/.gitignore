@@ -1,6 +1,3 @@
-node_modules/
-dist/
-dist-ff/
 *.zip
 server/sentinel.db*
 .env

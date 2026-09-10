@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Sentinel Config</title>
+  <style>
+    :root { --bg:#0b0e14; --panel:#12161f; --border:#242a37; --fg:#e6ebf5; --muted:#8b93a7; --accent:#00e5a0; }
+    body { font-family: system-ui, sans-serif; background: var(--bg); color: var(--fg); margin: 0; padding: 16px; width: 340px; }
+    h2 { margin: 0 0 4px; font-size: 15px; }
+    p.hint { margin: 0 0 14px; color: var(--muted); font-size: 11px; }
+    label { display:block; font-size: 11px; color: var(--muted); margin: 10px 0 4px; }
+    input[type=text], input[type=password], textarea, select {
+      width: 100%; box-sizing: border-box; background: var(--panel); border: 1px solid var(--border);
+      color: var(--fg); border-radius: 6px; padding: 7px 9px; font-size: 12px; font-family: inherit;
+    }
+    .row { display:flex; gap:8px; align-items:center; margin-top:14px; }
+    button {
+      background: var(--accent); border: 0; color: #04120c; font-weight: 700; font-size: 12px;
+      padding: 8px 14px; border-radius: 6px; cursor: pointer;
+    }
+    button.ghost { background: var(--panel); color: var(--fg); border: 1px solid var(--border); }
+    #status, #vaultStatus { margin-left: 8px; font-size: 11px; color: var(--accent); }
+  </style>
+</head>
+<body>
+  <h2>⚙️ Sentinel Settings</h2>
+  <p class="hint">Settings are stored locally in your browser. Vault secrets never leave the device.</p>
+
+  <label>Server URL</label>
+  <input type="text" id="serverUrl">
+
+  <label>Server mode</label>
+  <select id="serverMode">
+    <option value="hybrid">Hybrid — remote LLM + local fallback (recommended)</option>
+    <option value="remote">Remote LLM only</option>
+    <option value="mock">Mock server (offline demo bundled with repo)</option>
+  </select>
+
+  <label>Mask style</label>
+  <select id="maskMode">
+    <option value="blur">Blur</option>
+    <option value="pixelate">Pixelate</option>
+    <option value="solid">Solid black</option>
+  </select>
+
+  <div class="row">
+    <button id="save">Save settings</button>
+    <span id="status"></span>
+  </div>
+
+  <label>Private vault (placeholder = secret, stored locally only)</label>
+  <textarea id="vault" rows="4" placeholder="[PASSWORD_1]=hunter2"></textarea>
+
+  <div class="row">
+    <button class="ghost" id="saveVault">Save vault</button>
+    <span id="vaultStatus"></span>
+  </div>
+
+  <script src="config.js"></script>
+</body>
+</html>
